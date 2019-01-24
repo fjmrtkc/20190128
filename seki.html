@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>ワークショップ座席</title>
+    </head>
+    <body>
+        あなたの席は<form><input id="seki_btn" type="button" value="ボタン">
+            <span id="seki">こちらです</span></form>
+        <script>
+var seat=4;
+var members=48;
+var arr=Array(members).fill(null).map((x,y)=>[String.fromCharCode((y-y%seat)/seat+65)+(y%seat+1).toString(),Math.random()]);
+arr.sort((x,y)=>x[1]-y[1]);
+window.addEventListener('DOMContentLoaded', e=>{
+  document.querySelector('#seki_btn').addEventListener('click',e=>{
+    document.querySelector('#seki').textContent=(arr.length?arr.shift()[0]:"終了");
+  });
+});
+</script>
+</html>
